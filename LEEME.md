@@ -1,4 +1,4 @@
-# Gastos Claros · Versión 0.1
+# Gastos Claros · Versión 1.1
 
 Primera versión de una aplicación sencilla de control de gastos mensuales para móvil, hecha en HTML, CSS y JavaScript sin librerías externas. El objetivo es registrar gastos de forma rápida, ver su distribución por categorías y comparar meses.
 
@@ -6,9 +6,11 @@ Primera versión de una aplicación sencilla de control de gastos mensuales para
 
 - Vista de resumen de gastos, ingresos y saldo mensual de consumo.
 - Registro rápido escribiendo, por ejemplo, `Mercadona 37,50`.
-- Alta, modificación y eliminación de gastos, ingresos, traspasos y aportaciones de inversión. Los traspasos y las aportaciones no se contabilizan como gasto de consumo.
+- Alta, modificación y eliminación de gastos, ingresos, traspasos y aportaciones de inversión. Las aportaciones se contabilizan como salidas de liquidez, sin considerarse gasto de consumo; los traspasos ordinarios no se incluyen en las salidas de este resumen.
 - Clasificación inicial de comercios por categorías, que puedes corregir.
-- Gráfico de los últimos seis meses y gráfico anual para ver los meses de mayor y menor gasto.
+- Gráfico circular mensual con categorías de consumo e inversiones, y leyenda con importes y porcentajes.
+- Gráfico comparativo de los últimos seis meses y gráfico anual con consumo e inversiones diferenciados.
+- Indicadores de gastos de consumo, ingresos, inversiones y liquidez libre estimada.
 - Búsqueda y filtros en movimientos.
 - Importación de movimientos bancarios CSV (archivo, no conexión bancaria): selección de columnas, signo de los importes, revisión previa y avisos por posibles duplicados.
 - Exportación CSV y copia/restauración JSON.
@@ -43,8 +45,9 @@ Abre `Gastos_Claros_Probar.html` en un navegador compatible (incluido junto al p
 
 - **Gastos:** operaciones de tipo «Gasto» (consumo).
 - **Ingresos:** operaciones de tipo «Ingreso».
-- **Saldo sin gastar:** ingresos menos gastos de consumo registrados. No es necesariamente el saldo bancario ni una medida de patrimonio.
-- **Inversión / traspaso:** movimientos informativos que no se suman al gasto de consumo.
+- **Liquidez libre estimada:** ingresos menos gastos de consumo menos inversiones registradas. No es necesariamente el saldo bancario ni una medida de patrimonio; no incluye saldo inicial ni transferencias entre cuentas.
+- **Inversión:** se resta de la liquidez y se refleja en gráficas de salidas de efectivo, pero no se suma al gasto de consumo.
+- **Traspaso:** operación entre cuentas, excluida de las métricas principales para evitar doble contabilización.
 - **Media mensual en evolución:** promedio de los meses con movimientos, según el año elegido.
 
 ## Estructura
@@ -55,3 +58,13 @@ Abre `Gastos_Claros_Probar.html` en un navegador compatible (incluido junto al p
 - `manifest.webmanifest`, `sw.js` e `icons/`: recursos para instalar como PWA.
 
 Desarrollado como prototipo de uso personal, sin garantías de disponibilidad ni de compatibilidad con los CSV de todos los bancos. Antes de confiar plenamente en sus resúmenes, conviene comparar un mes con el extracto bancario.
+
+## Actualizar de la v0.1 a la v1.1 sin perder movimientos
+
+1. **Antes de cambiar archivos**: abre la aplicación instalada en el móvil y descarga **Ajustes y datos → Copia de seguridad JSON**; guárdala fuera de la aplicación (Archivos/iCloud).
+2. Reemplaza únicamente el código estático en el mismo repositorio y bajo la **misma dirección web**; evita borrar datos del navegador o desinstalar la aplicación.
+3. La clave de almacenamiento **`gastos-claros-v1`** se mantiene exactamente igual; las operaciones existentes se siguen leyendo, sin conversión ni borrado.
+4. Al volver a abrir, verifica importes y número de movimientos. Si faltaran datos, usa **Restaurar JSON** con la copia de seguridad. Atención: restaurar **sustituye** todos los movimientos por los de esa copia.
+5. GitHub Pages publica el **código**, no tus operaciones bancarias privadas. **No subas archivos JSON/CSV personales** al repositorio.
+
+> La fórmula de liquidez libre *ingresos − consumo − inversiones* es una estimación del mes. No incluye fondos existentes antes del mes ni traspasos entre cuentas, por lo que no sustituye a una conciliación bancaria.
