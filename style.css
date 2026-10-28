@@ -246,3 +246,19 @@ h3 { font-size:14px; }
   .donut-hole { width:100px; height:100px; }
   .donut-hole strong { font-size:15px; }
 }
+
+/* v1.2 — Comparativas de gastos e ingresos; histórico lineal accesible en móvil. */
+.bar.spent { background:#c45462; }
+.bar.income { background:#3f79bb; }
+.linechart-scroll { width:100%; max-width:100%; overflow-x:auto; overscroll-behavior-inline:contain; -webkit-overflow-scrolling:touch; border:1px solid #edf1f5; border-radius:12px; background:linear-gradient(#fff,#fcfdff); }
+.linechart { display:block; width:100%; min-width:710px; height:auto; }
+.linechart-detail { margin-top:12px; }
+.linechart-detail summary { cursor:pointer; font-size:12px; font-weight:700; color:#55758d; padding:7px 0; }
+.timeline-note { margin-top:10px; }
+.timeline-months { display:grid; grid-template-columns:repeat(auto-fill,minmax(124px,1fr)); gap:7px; padding-top:8px; }
+.timeline-month { background:#f8fafc; border:1px solid #e8edf1; border-radius:9px; text-align:left; cursor:pointer; display:flex; flex-direction:column; gap:4px; padding:10px; font-size:11px; }
+.timeline-month strong { color:#20384e; margin-bottom:3px; }
+.timeline-expense { color:#c45462; font-weight:650; }
+.timeline-income { color:#3f79bb; font-weight:650; }
+.timeline-month:hover,.timeline-month:focus-visible { border-color:#85a9cd; background:#f1f6fa; }
+@media(max-width:700px){ .linechart { width:710px; } .linechart-detail summary { font-size:12px; } .linechart-scroll::after { content:none; } }

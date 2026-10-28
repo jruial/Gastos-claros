@@ -1,4 +1,4 @@
-# Gastos Claros · Versión 1.1
+# Gastos Claros · Versión 1.2
 
 Primera versión de una aplicación sencilla de control de gastos mensuales para móvil, hecha en HTML, CSS y JavaScript sin librerías externas. El objetivo es registrar gastos de forma rápida, ver su distribución por categorías y comparar meses.
 
@@ -9,7 +9,7 @@ Primera versión de una aplicación sencilla de control de gastos mensuales para
 - Alta, modificación y eliminación de gastos, ingresos, traspasos y aportaciones de inversión. Las aportaciones se contabilizan como salidas de liquidez, sin considerarse gasto de consumo; los traspasos ordinarios no se incluyen en las salidas de este resumen.
 - Clasificación inicial de comercios por categorías, que puedes corregir.
 - Gráfico circular mensual con categorías de consumo e inversiones, y leyenda con importes y porcentajes.
-- Gráfico comparativo de los últimos seis meses y gráfico anual con consumo e inversiones diferenciados.
+- Gráfico de barras de los últimos seis meses que compara gastos de consumo (rojo) con ingresos (azul); gráfico anual de líneas rojo/azul en el apartado Evolución, con detalle por mes y navegación por años.
 - Indicadores de gastos de consumo, ingresos, inversiones y liquidez libre estimada.
 - Búsqueda y filtros en movimientos.
 - Importación de movimientos bancarios CSV (archivo, no conexión bancaria): selección de columnas, signo de los importes, revisión previa y avisos por posibles duplicados.
@@ -17,9 +17,9 @@ Primera versión de una aplicación sencilla de control de gastos mensuales para
 - Datos de ejemplo separados de tus registros reales. Al pulsar **Usar mis datos** se entra en modo personal vacío.
 - Interfaz móvil y funcionamiento sin conexión una vez instalada en un servidor HTTPS compatible con PWA.
 
-## Cómo probar ahora
+## Cómo probar la actualización
 
-Abre `Gastos_Claros_Probar.html` en un navegador compatible (incluido junto al paquete). Incluye todos los archivos de código en una sola página para facilitar las pruebas. Si se abre directamente como archivo, algunos navegadores —en especial en iOS— pueden no guardar los datos de forma persistente. No lo uses como archivo definitivo de tus cuentas: utiliza la versión alojada e instalada y exporta una copia.
+Si ya usas Gastos Claros, haz primero una **copia de seguridad JSON** desde Ajustes. Después publica los archivos de actualización en el mismo repositorio GitHub Pages de siempre y abre la dirección habitual. No desinstales la aplicación ni borres datos del navegador; se mantiene el almacenamiento local existente.
 
 ## Cómo instalarlo como app en el iPhone
 
